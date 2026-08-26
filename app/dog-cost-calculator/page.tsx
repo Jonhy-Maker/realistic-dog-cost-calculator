@@ -1,0 +1,1 @@
+import type {Metadata} from "next"; import CalculatorApp from "@/components/CalculatorApp"; export const metadata:Metadata={alternates:{canonical:"/dog-cost-calculator"},title:"Dog Cost Calculator",description:"Calculate realistic monthly, yearly, first-year and lifetime dog ownership costs."}; export default function Page(){return <CalculatorApp/>}

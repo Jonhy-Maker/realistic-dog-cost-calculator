@@ -1,0 +1,1 @@
+import type {Metadata} from "next"; import CalculatorApp from "@/components/CalculatorApp"; export const metadata:Metadata={alternates:{canonical:"/dog-cost-per-year"},title:"Dog Cost Per Year",description:"Estimate annual dog ownership costs including food, vet, insurance and lifestyle."}; export default function Page(){return <CalculatorApp/>}

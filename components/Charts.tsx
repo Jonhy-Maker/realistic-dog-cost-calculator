@@ -1,0 +1,8 @@
+"use client";
+import {PieChart,Pie,Cell,Tooltip,ResponsiveContainer,LineChart,Line,XAxis,YAxis,CartesianGrid} from "recharts";
+import type {Result} from "@/lib/calculator";
+import type {Currency} from "@/lib/calculator";
+import {money} from "@/lib/format";
+const labels:{key:string;name:string}[]=[{key:"food",name:"Food"},{key:"vet",name:"Veterinary"},{key:"insurance",name:"Insurance"},{key:"grooming",name:"Grooming"},{key:"training",name:"Training"},{key:"supplies",name:"Supplies"},{key:"walking",name:"Walking/daycare"},{key:"travel",name:"Travel"},{key:"housing",name:"Housing"},{key:"unexpected",name:"Unexpected"}];
+export function BreakdownChart({result,currency}:{result:Result;currency:Currency}){const data=labels.map(x=>({name:x.name,value:Math.round(result.breakdown[x.key as keyof typeof result.breakdown]*100)})).filter(x=>x.value>0);return <div className="h-72 w-full"><ResponsiveContainer><PieChart><Pie data={data} dataKey="value" nameKey="name" innerRadius={65} outerRadius={100} paddingAngle={2}>{data.map((_,i)=><Cell key={i} fill={`hsl(${145+i*22} 45% ${45+i%3*8}%)`}/>)}</Pie><Tooltip formatter={(v)=>`${v}%`}/></PieChart></ResponsiveContainer></div>}
+export function TimelineChart({result,currency}:{result:Result;currency:Currency}){return <div className="h-80 w-full"><ResponsiveContainer><LineChart data={result.timeline}><CartesianGrid strokeDasharray="3 3" stroke="#e4ebe7"/><XAxis dataKey="year" tickFormatter={v=>`Y${v}`}/><YAxis tickFormatter={v=>money(Number(v),currency)}/><Tooltip formatter={(v)=>money(Number(v),currency)}/><Line type="monotone" dataKey="cost" stroke="#1f7a58" strokeWidth={3} dot={false}/></LineChart></ResponsiveContainer></div>}

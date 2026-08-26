@@ -1,0 +1,2 @@
+# No advertising network is active in this build.
+# Add only the exact authorized seller line supplied by your approved ad provider.
