@@ -1,2 +1,22 @@
-# No advertising network is active in this build.
-# Add only the exact authorized seller line supplied by your approved ad provider.
+import Script from "next/script";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="nl">
+      <body>
+        {children}
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7925832816251718"
+     crossorigin="anonymous"></script>
+-ID"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </body>
+    </html>
+  );
+}
