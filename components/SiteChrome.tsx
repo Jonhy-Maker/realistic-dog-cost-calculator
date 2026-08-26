@@ -1,5 +1,11 @@
 "use client";
 
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+  }
+}
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
