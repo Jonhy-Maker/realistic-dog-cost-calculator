@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar, Footer } from "@/components/SiteChrome";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -21,12 +23,20 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Realistic Dog Cost Calculator",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Realistic Dog Cost Calculator" }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Realistic Dog Cost Calculator",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Realistic Dog Cost Calculator",
-    description: "Estimate monthly, yearly, first-year and lifetime dog ownership costs.",
+    description:
+      "Estimate monthly, yearly, first-year and lifetime dog ownership costs.",
     images: ["/og-image.png"],
   },
   icons: { icon: "/icon.svg" },
@@ -37,10 +47,26 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body><Navbar />{children}<Footer /></body>
+      <body>
+        <Navbar />
+
+        {children}
+
+        <Footer />
+
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7925832816251718"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
