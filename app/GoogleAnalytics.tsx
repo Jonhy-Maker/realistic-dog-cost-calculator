@@ -1,32 +1,23 @@
-"use client";
-
-import { useEffect } from "react";
-
-declare global {
-  interface Window {
-    dataLayer: any[];
-  }
-}
+import Script from "next/script";
 
 export default function GoogleAnalytics() {
-  useEffect(() => {
-    const script = document.createElement("script");
+  return (
+    <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-MZKZHDE70L"
+        strategy="afterInteractive"
+      />
 
-    script.async = true;
-    script.src =
-      "https://www.googletagmanager.com/gtag/js?id=G-MZKZHDE70L";
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          window.gtag = gtag;
 
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag(...args: any[]) {
-      window.dataLayer.push(args);
-    }
-
-    gtag("js", new Date());
-    gtag("config", "G-MZKZHDE70L");
-  }, []);
-
-  return null;
+          gtag('js', new Date());
+          gtag('config', 'G-MZKZHDE70L');
+        `}
+      </Script>
+    </>
+  );
 }

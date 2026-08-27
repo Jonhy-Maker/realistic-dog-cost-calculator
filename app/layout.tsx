@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar, Footer } from "@/components/SiteChrome";
 import GoogleTagManager from "./GoogleTagManager";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
@@ -81,6 +82,7 @@ export default function RootLayout({
       </head>
 
       <body>
+        <GoogleAnalytics />
         <GoogleTagManager />
         <Navbar />
         {children}
