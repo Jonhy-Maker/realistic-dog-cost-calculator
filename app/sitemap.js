@@ -1,15 +1,16 @@
-import type { MetadataRoute } from "next";
 import { breeds } from "@/data/breeds";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const paths = [
-    "/", "/dog-cost-calculator", "/puppy-cost-calculator", "/dog-cost-per-month",
-    "/dog-cost-per-year", "/breeds", "/compare", "/can-i-afford-a-dog", "/emergency-fund",
-    "/faq", "/privacy", "/terms", "/disclaimer", "/contact",
-  ];
+export default function sitemap() {
+  const baseUrl = "https://realistic-dog-cost-calculator-seven.vercel.app";
+
   return [
-    ...paths.map((path) => ({ url: `${base}${path}` })),
-    ...breeds.map((breed) => ({ url: `${base}/breeds/${breed.slug}-cost` })),
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+    },
+    ...breeds.map((breed) => ({
+      url: `${baseUrl}/honden/${breed.slug}`,
+      lastModified: new Date(),
+    })),
   ];
 }
