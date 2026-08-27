@@ -82,6 +82,7 @@ export default function RootLayout({
       </head>
 
       <body>
+        <GoogleAnalytics />
         <Navbar />
         {children}
         <Footer />
@@ -89,7 +90,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-
-
