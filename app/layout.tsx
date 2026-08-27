@@ -91,20 +91,6 @@ export default function RootLayout({
 
 import Script from "next/script";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="nl">
-      <body>
-        {children}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
 }>) {
   return (
     <html lang="nl">
