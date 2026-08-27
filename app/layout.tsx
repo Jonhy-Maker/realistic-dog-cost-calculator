@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Navbar, Footer } from "@/components/SiteChrome";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 
 const siteUrl =
@@ -90,26 +91,5 @@ export default function RootLayout({
 }
 
 
-}>) {
-  return (
-    <html lang="nl">
-      <body>
 
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-MZKZHDE70L"
-          strategy="afterInteractive"
-        />
 
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-MZKZHDE70L');
-          `}
-        </Script>
-      </body>
-    </html>
-  );
-}
