@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar, Footer } from "@/components/SiteChrome";
 
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   "https://realistic-dog-cost-calculator-seven.vercel.app";
@@ -100,12 +101,31 @@ export default function RootLayout({
       <body>
         {children}
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MZKZHDE70L"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="nl">
+      <body>
+        {children}
 
-  gtag('config', 'G-MZKZHDE70L');
-</script>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-MZKZHDE70L"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MZKZHDE70L');
+          `}
+        </Script>
+      </body>
+    </html>
+  );
+}
