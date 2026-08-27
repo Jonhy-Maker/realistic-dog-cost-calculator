@@ -100,20 +100,12 @@ export default function RootLayout({
       <body>
         {children}
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-MZKZHDE70L"
-          strategy="afterInteractive"
-        />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MZKZHDE70L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-MZKZHDE70L');
-          `}
-        </Script>
-      </body>
-    </html>
-  );
-}
+  gtag('config', 'G-MZKZHDE70L');
+</script>
