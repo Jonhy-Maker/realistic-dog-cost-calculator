@@ -82,7 +82,6 @@ export default function RootLayout({
 
       <body>
         <GoogleTagManager />
-        <GoogleAnalytics />
         <Navbar />
         {children}
         <Footer />
