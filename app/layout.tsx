@@ -89,13 +89,11 @@ export default function RootLayout({
   );
 }
 
-import Script from "next/script";
 
 }>) {
   return (
     <html lang="nl">
       <body>
-        {children}
 
         <Script
           async
